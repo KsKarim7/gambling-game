@@ -22,25 +22,26 @@ def get_slot_machine_spin(rows, cols, symbols):
             all_symbols.append(sym)
 
     columns = []
-    for _ in range(COLS):
+    for _ in range(cols):
         column = []
         current_symbols = all_symbols[:]
-        for _ in range(ROWS):
+        for _ in range(rows):
             value = random.choice(current_symbols)
             current_symbols.remove(value)
             column.append(value)
-        column.append(column)
+        columns.append(column)
 
     return columns
 
 
 def print_slot_machine(columns):
     for row in range(len(columns[0])):
-        for i, column in enumerate.columns:
+        for i, column in enumerate(columns):
             if (i != len(columns) - 1):
-                print(column[row], "|")
+                print(column[row], end=" | ")
             else:
-                print(column[row])
+                print(column[row], end="")
+        print()
 
 
 def deposit():
@@ -80,9 +81,9 @@ def get_bet():
             if (MIN_BET <= amount <= MAX_BET):
                 break
             else:
-                print(f"\nAmount must be ${MIN_BET} - ${MAX_BET} !")
+                print(f"Amount must be ${MIN_BET} - ${MAX_BET} !")
         else:
-            print("\nPlease enter a valid number!\n")
+            print("Please enter a valid number!\n")
     return amount
 
 
